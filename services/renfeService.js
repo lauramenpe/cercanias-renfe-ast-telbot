@@ -18,6 +18,9 @@ function getWarningsByRegion(region, callback) {
             let warnings = JSON.parse(data);
             callback(filterWarningsByRegion(warnings, region));
         });
+    })
+    .catch(err => { 
+        console.log(err)
     });
 }
 
