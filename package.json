@@ -1,7 +1,7 @@
 {
   "name": "cercanias-renfe-ast-telbot",
   "version": "1.0.0",
-  "description": "Bot para Telegram en Node.js que envía los avisos de Renfe de Asturias",
+  "description": "Programa que utiliza un bot de Telegram para notificar en un canal, también de Telegram, avisos y tweets informados por Renfe o Adif relativos a la comunidad de Asturias.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
@@ -11,9 +11,7 @@
     "moment": "^2.29.4",
     "node-cron": "^3.0.2",
     "node-telegram-bot-api": "^0.61.0",
-    "rettiwt-api": "^2.1.0"
-  },
-  "devDependencies": {
+    "rettiwt-api": "^2.1.0",
     "dotenv": "^16.3.1"
   }
 }

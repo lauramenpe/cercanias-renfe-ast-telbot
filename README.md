@@ -1,2 +1,2 @@
 # cercanias-renfe-ast-telbot
-Bot de Telegram para notificar avisos y eventos relativos a Renfe Cercanías en Asturias
+Programa que utiliza un bot de Telegram para notificar en un canal, también de Telegram, avisos y tweets informados por Renfe o Adif relativos a la comunidad de Asturias.
