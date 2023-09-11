@@ -12,7 +12,7 @@ app.listen(port, () => {
 const cron = require('node-cron');
 const moment = require('moment');
 
-// const telegramService = require('./services/telegramService');
+const telegramService = require('./services/telegramService');
 const renfeService = require('./services/renfeService');
 const twitterService = require('./services/twitterService');
 
@@ -43,9 +43,9 @@ cron.schedule(process.env.JOB_RENFE_TWEETS, () => {
             tweets.forEach(tweet => {
                 telegramService.sendTweetToChannel(tweet);
             });
-            lastDate = moment().toDate();
         } else {
             console.log('There are no tweets to send');
         }
+        lastDate = moment().toDate();
     });
 });
