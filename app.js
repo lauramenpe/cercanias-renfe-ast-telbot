@@ -10,11 +10,11 @@ app.listen(port, () => {
 });
 
 const cron = require('node-cron');
-const moment = require('moment');
 
 const telegramService = require('./services/telegramService');
 const renfeService = require('./services/renfeService');
 const twitterService = require('./services/twitterService');
+const dateService = require('./services/dateService');
 
 const regionName = "Asturias";
 
@@ -34,7 +34,7 @@ cron.schedule(process.env.JOB_RENFE_WARNINGS, () => {
     );
 });
 
-var lastDate = moment().toDate();
+var lastDate = dateService.getActualDate();
 cron.schedule(process.env.JOB_RENFE_TWEETS, () => {
     console.log(`Getting tweets by ${regionName} and ${lastDate} date`);
     twitterService.getTweetsByRegionAndDate(regionName, lastDate, (tweets) => {
@@ -46,6 +46,6 @@ cron.schedule(process.env.JOB_RENFE_TWEETS, () => {
         } else {
             console.log('There are no tweets to send');
         }
-        lastDate = moment().toDate();
+        lastDate = dateService.getActualDate();
     });
 });

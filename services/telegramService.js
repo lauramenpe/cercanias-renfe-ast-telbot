@@ -1,10 +1,11 @@
-const moment = require('moment');
 const TelegramBot = require('node-telegram-bot-api');
 
 const botToken = process.env.TELEGRAM_BOT_TOKEN;
 const bot = new TelegramBot(botToken, {polling: true});
 
 const channelId = process.env.TELEGRAM_CHANNEL_ID;
+
+const dateService = require('./services/dateService');
 
 function sendWarningToChannel(warning) {
     let renfeLink = `https://${process.env.RENFE_HOSTNAME}${warning.link}`;
@@ -14,7 +15,7 @@ function sendWarningToChannel(warning) {
 function sendTweetToChannel(tweet) {
     let tweetUsername = tweet.tweetBy.userName;
     let tweetLink = `https://${process.env.TWITTER_HOSTNAME}/${tweetUsername}/status/${tweet.id}`;
-    let tweetDate = moment(new Date(tweet.createdAt)).format('DD-MM-YYYY HH:mm:ss');
+    let tweetDate = dateService.formatDate(tweet.createdAt);
     sendMessageToChannel(`Tweet de <b>@${tweetUsername}</b> el ${tweetDate}:\n${tweet.fullText}\n<a href="${tweetLink}">Ver tweet</a>`);
 }
 
