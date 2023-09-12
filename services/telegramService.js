@@ -5,7 +5,7 @@ const bot = new TelegramBot(botToken, {polling: true});
 
 const channelId = process.env.TELEGRAM_CHANNEL_ID;
 
-const dateService = require('./services/dateService');
+const dateService = require('./dateService');
 
 function sendWarningToChannel(warning) {
     let renfeLink = `https://${process.env.RENFE_HOSTNAME}${warning.link}`;
