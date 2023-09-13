@@ -32,7 +32,7 @@ cron.schedule(process.env.JOB_RENFE_WARNINGS, () => {
         }
       }
     );
-});
+}, { timezone: process.env.TIMEZONE });
 
 var lastDate = dateService.getActualDate();
 cron.schedule(process.env.JOB_RENFE_TWEETS, () => {
@@ -48,4 +48,4 @@ cron.schedule(process.env.JOB_RENFE_TWEETS, () => {
         }
         lastDate = dateService.getActualDate();
     });
-});
+}, { timezone: process.env.TIMEZONE });
