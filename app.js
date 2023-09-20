@@ -19,6 +19,7 @@ const dateService = require('./services/dateService');
 const regionName = "Asturias";
 
 console.log(`Scheduling cron jobs`);
+
 cron.schedule(process.env.JOB_RENFE_WARNINGS, () => {
     console.log(`Getting Renfe warnings by ${regionName} region`);
     renfeService.getWarningsByRegion(regionName, (warnings) => {
@@ -35,6 +36,8 @@ cron.schedule(process.env.JOB_RENFE_WARNINGS, () => {
 }, { timezone: process.env.TIMEZONE });
 
 var lastDate = dateService.getActualDate();
+dateService.dateMinusHours(lastDate, 1);
+
 cron.schedule(process.env.JOB_RENFE_TWEETS, () => {
     console.log(`Getting tweets by ${regionName} and ${lastDate} date`);
     twitterService.getTweetsByRegionAndDate(regionName, lastDate, (tweets) => {
